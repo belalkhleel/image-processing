@@ -16,7 +16,7 @@
   "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5" 
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
