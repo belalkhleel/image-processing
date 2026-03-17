@@ -14,23 +14,38 @@ Key features:
 
 ---
 
+
 ## 🔧 Installation
 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
 cd <project-folder>
+````
 
-Install dependencies:
+2. Install dependencies:
+
+```bash
 npm install
+```
 
-Build the project:
+3. Build the project:
+
+```bash
 npm run build
+```
 
-Start the server:
+4. Start the server:
+
+```bash
 npm start
+```
 
-Server runs on: http://localhost:3000
+Server runs on: `http://localhost:3000`
+
+---
+
+## ⚡ Available Scripts
 
 | Script           | Command                                   | Description                     |
 | ---------------- | ----------------------------------------- | ------------------------------- |
@@ -40,15 +55,21 @@ Server runs on: http://localhost:3000
 | `npm run lint`   | `eslint . --ext .ts`                      | Runs ESLint                     |
 | `npm run format` | `prettier --write '**/*.{ts,js,json,md}'` | Formats all files with Prettier |
 
-🌐 API Endpoint
+---
 
-Base URL : http://localhost:3000/api/images
+## 🌐 API Endpoint
 
-GET /api/images
+### Base URL
 
-Description: Resizes an image and returns it.
+```
+http://localhost:3000/api/images
+```
 
-Query Parameters:
+### GET /api/images
+
+**Description:** Resizes an image and returns it.
+
+**Query Parameters:**
 
 | Parameter | Type   | Required | Description                                                               |
 | --------- | ------ | -------- | ------------------------------------------------------------------------- |
@@ -56,7 +77,9 @@ Query Parameters:
 | width     | number | Yes      | Width in pixels (positive integer).                                       |
 | height    | number | Yes      | Height in pixels (positive integer).                                      |
 
-🔹 Available Images
+---
+
+### 🔹 Available Images
 
 | Filename (without extension) |
 | ---------------------------- |
@@ -66,18 +89,25 @@ Query Parameters:
 | palmtunnel                   |
 | santamonica                  |
 
-Example:
+**Example:**
+
+```http
 GET /api/images?filename=encenadaport&width=200&height=200
+```
 
-🔹 Success Response
+---
 
-Status Code: 200 OK
-Content: Returns resized JPEG image.
+### 🔹 Success Response
 
-Example:
-Resized image saved as: images/thumb/encenadaport-200x200.jpg
+**Status Code:** 200 OK
+**Content:** Returns resized JPEG image.
 
-🔹 Error Responses
+**Example:**
+Resized image saved as: `images/thumb/encenadaport-200x200.jpg`
+
+---
+
+### 🔹 Error Responses
 
 | Status Code | Condition                                         | Message                                      |
 | ----------- | ------------------------------------------------- | -------------------------------------------- |
@@ -87,41 +117,45 @@ Resized image saved as: images/thumb/encenadaport-200x200.jpg
 | 404         | Image not found                                   | `Image not found`                            |
 | 500         | Internal error                                    | `Internal Server Error`                      |
 
-Notes
+---
 
-Resized images are cached in images/thumb/. If a requested size already exists, the server returns the cached file.
+### Notes
 
-All images are .jpg.
+* Resized images are cached in `images/thumb/`. If a requested size already exists, the server returns the cached file.
+* All images are `.jpg`.
+* Original images must be placed in `images/full/`.
+* Resized images naming convention: `<filename>-<width>x<height>.jpg`.
 
-Original images must be placed in images/full/.
+---
 
-Resized images naming convention: <filename>-<width>x<height>.jpg.
+## 🧪 Testing
 
-🧪 Testing
+* Jasmine is used for API and utility function tests.
+* Run tests:
 
-Jasmine is used for API and utility function tests.
-
-Run tests:
+```bash
 npm run test
+```
 
+**Tested Scenarios:**
 
-Tested Scenarios:
+* Missing query parameters (filename, width, height)
+* Invalid width/height values
+* Non-existent images
+* Successful resize of valid images
 
-Missing query parameters (filename, width, height)
+---
 
-Invalid width/height values
-
-Non-existent images
-
-Successful resize of valid images
-
-
-📌 Conclusion
+## 📌 Conclusion
 
 This project demonstrates:
-TypeScript + Node.js + Express integration
-Proper API validation and error handling
-Image processing with caching
-Full test coverage with Jasmine
-Code quality maintained with ESLint and Prettier
-All endpoints, scripts, and functionality are verified to work correctly.
+
+* TypeScript + Node.js + Express integration
+* Proper API validation and error handling
+* Image processing with caching
+* Full test coverage with Jasmine
+* Code quality maintained with ESLint and Prettier
+
+> All endpoints, scripts, and functionality are verified to work correctly.
+
+```
